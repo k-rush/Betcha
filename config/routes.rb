@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   root 'bets#feed'
 
-  get 'bets' => 'bets#feed'
   get 'bets/new' => 'bets#new'
   post 'bets' => 'bets#create'
 

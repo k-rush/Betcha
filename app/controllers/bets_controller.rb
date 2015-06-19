@@ -1,6 +1,6 @@
 class BetsController < ApplicationController
   before_action :authenticate_user!, only: [:feed, :show, :new, :create]
-	def feed
+	def index
 		@bet = Bet.all
 	end
   
