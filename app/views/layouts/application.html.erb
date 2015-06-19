@@ -31,4 +31,11 @@
     </div>
   </div>
 
+  <!-- provides alerts and warnings -->
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class "alert" %>
+    <% end %>
+  </div>
+
   <%= yield %>
