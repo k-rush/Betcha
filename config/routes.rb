@@ -3,11 +3,6 @@ Rails.application.routes.draw do
   devise_for :users
   root 'bets#feed'
 
-  get 'signup' => 'users#new'
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
-
   get 'bets' => 'bets#feed'
   get 'bets/new' => 'bets#new'
   post 'bets' => 'bets#create'
