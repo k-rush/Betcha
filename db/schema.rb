@@ -23,23 +23,6 @@ ActiveRecord::Schema.define(version: 20150618224508) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cuisines", force: :cascade do |t|
-    t.string   "region"
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image"
-    t.text     "ingredients"
-    t.text     "instructions"
-    t.integer  "cuisine_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -47,7 +30,6 @@ ActiveRecord::Schema.define(version: 20150618224508) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "role"
   end
 
 end
