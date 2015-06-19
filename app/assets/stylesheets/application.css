@@ -24,10 +24,8 @@ body {
   background-color: #DAD8D2;
 }
 
-
-
 .header {
-  background-color: #88e;
+  background-color: #99a;
   height: auto;
   width: 100%;
 }
@@ -36,19 +34,12 @@ body {
   width: 100%;
 }
 
-.logo {
-  height: 100px;
-  margin: 0 auto;
-  position: relative;
-  top: 140px;
-  width: 220px;
-}
-
 .nav ul {
   list-style: none;
 }
 
 .nav ul li {
+  background-color: #99a;
   color: #fff;
   display: block;
   float: left;

@@ -9,7 +9,7 @@
 
 .bets a,
 .create .actions input {
-  background-color: #f2580b;
+  background-color: #99a;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -35,7 +35,7 @@ p.time {
 }
 
 button {
-  background-color: #f2580b;
+  background-color: #99a;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -46,8 +46,10 @@ button {
 }
 
 button:hover {
-  background-color: #c24609;
-  transition: background-color 0.5s;
+  color: #000;
+  background-color: #fff;
+  text-decoration: none;
+  transition: background 0.5s, color 0.5s;
 }
 
 form label {
