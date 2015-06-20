@@ -1,7 +1,7 @@
 class BetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :new, :create]
 	def index
-		@bets = Bet.all #changed from @bet
+		@bets = Bet.all #changed from @bet =
 	end
   
   def new
@@ -11,7 +11,7 @@ class BetsController < ApplicationController
   def create 
   	@bet = current_user.bets.build(bet_params) # changed form Bet.new
   	if @bet.save 
-    	redirect_to '/bets' 
+    	redirect_to '/bets'
  	 	else 
     	render 'new' 
   		end 
