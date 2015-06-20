@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root 'bets#feed'
-
-  get 'bets/new' => 'bets#new'
-  post 'bets' => 'bets#create'
-
-  resources :users
+  root 'bets#index'
+  resources :bets
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
