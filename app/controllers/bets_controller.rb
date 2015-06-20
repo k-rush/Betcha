@@ -1,5 +1,5 @@
 class BetsController < ApplicationController
-  before_action :authenticate_user!, only: [:feed, :show, :new, :create]
+  before_action :authenticate_user!, only: [:index, :show, :new, :create]
 	def index
 		@bets = Bet.all #changed from @bet
 	end
