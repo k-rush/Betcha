@@ -30,5 +30,6 @@ class FriendshipsController < ApplicationController
     @friendship.destroy
     flash[:notice] = "Removed friendship"
     redirect_to :back
+  end
 
 end
