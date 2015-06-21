@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-# FRIENDS
+# FRIENDS (and friendships)
   has_many :friendships
   has_many :passive_friendships,  class_name: "Friendship",
                                   foreign_key: "friend_id" 
@@ -29,9 +29,8 @@ class User < ActiveRecord::Base
 
    has_many :membership_requests, -> { where(memberships: { accepted: false }) }, through: :memberships, source: :bet
 
-
-
-
-  
+  def active_bets
+    agree_bets | against_bets
+  end
 
 end
