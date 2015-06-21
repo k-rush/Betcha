@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+# FRIENDS
   has_many :friendships
   has_many :passive_friendships,  class_name: "Friendship",
                                   foreign_key: "friend_id" 
@@ -18,6 +19,9 @@ class User < ActiveRecord::Base
     active_friends | passive_friends
   end
 
-  has_many :bets
+  has_many :bets # bet the user created
+  
+
+  
 
 end
