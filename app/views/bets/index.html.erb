@@ -7,7 +7,7 @@
         <% if current_user.id == bet.user_id %>
           <div class="bet">
             <h1>Your Bet </h1> 
-              <p><%= bet.bet %> </p>
+              <%= link_to bet.title, bet %>
               <p>Wager:   <%= bet.wager %> </p>
               <p>Odds:    <%= bet.odds %> </p>
               <!--<p class="time"><%= bet.created_at %></p>-->
@@ -15,7 +15,7 @@
         <% else %>
           <div class="bet">
             <h1><%= bet.user.email %>'s Bet </h1> 
-              <p><%= bet.bet %> </p>
+              <%= link_to bet.title, bet %>
               <p>Wager:   <%= bet.wager %> </p>
               <p>Odds:    <%= bet.odds %> </p>
               <!--<p class="time"><%= bet.created_at %></p>-->
