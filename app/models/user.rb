@@ -19,8 +19,18 @@ class User < ActiveRecord::Base
     active_friends | passive_friends
   end
 
-  has_many :bets # bet the user created
-  
+  # BETS (and bet memberships)
+   has_many :bets # bet the user created
+
+   has_many :memberships
+
+   has_many :agree_bets,   -> { where(memberships: { accepted: true, against: false }) }, through: :memberships, source: :bet
+   has_many :against_bets, -> { where(memberships: { accepted: true, against: true }) },  through: :memberships, source: :bet
+
+   has_many :membership_requests, -> { where(memberships: { accepted: false }) }, through: :memberships, source: :bet
+
+
+
 
   
 

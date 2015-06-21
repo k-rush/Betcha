@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621182702) do
+ActiveRecord::Schema.define(version: 20150621184413) do
 
   create_table "bets", force: :cascade do |t|
     t.text     "bet"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150621182702) do
     t.boolean  "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "against"
   end
 
   create_table "users", force: :cascade do |t|
