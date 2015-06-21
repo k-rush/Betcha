@@ -3,6 +3,12 @@ class BetsController < ApplicationController
 	def index
 		@bets = Bet.all #changed from @bet =
 	end
+
+  def show
+    @bet = Bet.find(params[:id])
+    @agree_members = @bet.agree_members.all
+    @against_members = @bet.against_members.all
+  end
   
   def new
     @bet = current_user.bets.build
