@@ -46,10 +46,12 @@ body {
   height: 80px;
   line-height: 80px;
   text-align: center;
-  width: 50%;
+  width: auto%;
+  margin: 0 20px;
 }
 
 .nav ul li a {
+  padding: 0 20px;
   color: #fff;
   display: block;
   height: 100%;
