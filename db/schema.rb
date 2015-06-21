@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621203205) do
+ActiveRecord::Schema.define(version: 20150620174817) do
 
   create_table "bets", force: :cascade do |t|
     t.text     "bet"
@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 20150621203205) do
     t.boolean  "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "memberships", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "bet_id"
-    t.boolean  "accepted"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean  "against"
   end
 
   create_table "users", force: :cascade do |t|
