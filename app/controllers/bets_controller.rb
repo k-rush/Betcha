@@ -1,17 +1,17 @@
 class BetsController < ApplicationController
-  before_action :require_user, only:[:index, :show, :new, :create]
-	def feed
-		@bet = Bet.all
+  before_action :authenticate_user!, only: [:index, :show, :new, :create]
+	def index
+		@bets = Bet.all #changed from @bet =
 	end
   
   def new
-    @bet = Bet.new
+    @bet = current_user.bets.build
   end
   
   def create 
-  	@bet = Bet.new(bet_params) 
+  	@bet = current_user.bets.build(bet_params) # changed form Bet.new
   	if @bet.save 
-    	redirect_to '/bets' 
+    	redirect_to '/bets'
  	 	else 
     	render 'new' 
   		end 
@@ -19,7 +19,7 @@ class BetsController < ApplicationController
   
 	private 
   	def bet_params 
-    	params.require(:bet).permit(:title, :bet, :wager, :odds, :user_id)
+    	params.require(:bet).permit(:title, :bet, :wager, :odds) #removed user_id, will be created using current_user.bets.build
     end
 
 end
