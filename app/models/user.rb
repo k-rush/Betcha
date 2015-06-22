@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
   end
 
   # BETS (and bet memberships)
-   has_many :bets # bet the user created
-
    has_many :memberships
 
    has_many :agree_bets,   -> { where(memberships: { accepted: true, against: false }) }, through: :memberships, source: :bet
