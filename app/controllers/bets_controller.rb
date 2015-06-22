@@ -2,8 +2,12 @@ class BetsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create]
 	
   def index
-		@bets = current_user.active_bets.all # !!! check syntax and logic
-	end
+    if current_user.active_bets.any?
+		  @bets = current_user.active_bets.all # !!! check syntax and logic
+    else
+      @bets = []
+    end
+  end
 
   def show
     @bet = Bet.find(params[:id])
