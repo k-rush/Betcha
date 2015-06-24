@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
 * {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
@@ -8,10 +10,33 @@
 }
 
 body {
-  background-color: #DAD8D2;
+  background-color: #FAFAFA;;
+}
+
+.navbar-default {
+  background-color: #88e;
+}
+.navbar-brand > a {
+  color:rgb(240, 169, 74);;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
 }
 
 
+
+.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.bet {
+  background: rgb(240, 169, 74);
+  padding:1%;
+}
+/*
 
 .header {
   background-color: #88e;
@@ -62,3 +87,4 @@ body {
   text-decoration: none;
   transition: background 0.5s, color 0.5s;
 }
+*/

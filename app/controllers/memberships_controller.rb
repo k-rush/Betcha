@@ -27,12 +27,15 @@ class MembershipsController < ApplicationController
     @bet= @membership.bet
     @user = @membership.user
     if @membership.update_attributes(params.require(:membership).permit(:accepted))
-      flash[:success] = "#{@user.email} joined"
+      flash[:success] = "#{@user.name} joined the bet!"
       redirect_to @bet
     end
   end
 
   def destroy
+    @membership = Membership.find(params[:id])
+    @membership.destroy
+    redirect_to :back
   end
 
 end

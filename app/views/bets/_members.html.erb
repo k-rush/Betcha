@@ -5,23 +5,28 @@
 
 <h4>pending</h4>
 <% @agree_requesters.each do |requester| %>
-  <li>
-    <%= requester.email %>
-    
-    <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
-    
+  <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %> 
+
+  <%= requester.email %>
+
+  <div class="btn-group">
     <%= simple_form_for [@bet, membership] do |f| %>
-    
+<!--ACCEPT MEMBER BUTTON -->
       <%= f.hidden_field :accepted, accepted: true %>
-      <%= f.button :submit, "Accept", class: "btn btn-default" %>
+      <%= f.button :submit, "Accept", data: { confirm: "Are you sure (GIVE ODDS AND POTENTIAL WIN AND LOSS)" }, class: "btn btn-default btn-sm" %>
     <% end %>
-
-    <%= link_to "Reject", membership, method: :delete, class: 'btn btn-primary', data: { confirm: "Are you sure (GIVE ODDS AND MONIES" } %>
+<!--REJECT MEMBER BUTTON -->
+    <%= link_to "Reject", membership, method: :delete, data: { confirm: "Are you sure (GIVE ODDS AND POTENTIAL MONIES)" } , class: 'btn btn-default btn-sm' %>
+  <div>
+  <br>
     
 
-  </li>
+
 <% end %>
 
+<br>
+<br>
+<br>
 <h2>Against</h2>
 <% @against_members.each do |member| %>
   <li><%= member.email %></li>
