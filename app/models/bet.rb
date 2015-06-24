@@ -10,7 +10,7 @@ class Bet < ActiveRecord::Base
   def members
     agree_members | against_members
   end
-
+#
   def requests
     agree_requesters | against_requesters
   end

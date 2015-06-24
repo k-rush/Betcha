@@ -1,0 +1,15 @@
+<div class="bet-btn-group">
+      <div class="bet-btn agree-btn">
+        <%= simple_form_for([@bet, @bet.memberships.build]) do |f| %>
+          <%= f.hidden_field :against, against: false %>
+          <%= f.button :submit, "Agree!", class: "btn btn-primary bet-submit" %>
+        <% end %>
+      </div>
+
+      <div class="bet-btn against-btn">
+        <%= simple_form_for([@bet, @bet.memberships.build]) do |f| %>
+          <%= f.hidden_field :against, against: true %>
+          <%= f.button :submit, "Against!", class: "btn btn-primary bet-submit" %>
+        <% end %>
+      </div>
+</div>

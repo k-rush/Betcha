@@ -1,18 +1,10 @@
-<div class="btn-group">
+<div class="bet-btn-group">
+      <div class="bet-btn agree-btn btn btn-primary bet-submit">
+        <%= link_to "Agree!", memberships_path(bet_id: @bet, user_id: current_user, against: false), method: :post %>
 
+      </div>
 
-
-
-        <%= simple_form_for([@bet, @bet.memberships.build]) do |f| %>
-          <% f.hidden_field :accepted, accepted: false %>
-          <%= f.button :submit, "Agree!", class: "btn btn-primary" %>
-        <% end %>
-
-        <%= simple_form_for([@bet, @bet.memberships.build]) do |f| %>
-          <%= f.hidden_field :accepted, accepted: true %>
-          <%= f.button :submit, "Against!", class: "btn btn-primary" %>
-        <% end %>
-
-
-
+      <div class="bet-btn against-btn">
+         <%= link_to "Against!", memberships_path(bet_id: @bet, user_id: current_user, against: true), method: :post %>
+      </div>
 </div>

@@ -3,8 +3,14 @@
     %li
       membership 
       = membership.id
-    %li= membership.bet.title
-    %li= membership.user.email
+    - if membership.bet
+      %li= membership.bet.title
+    - else
+      %li NO BET
+    - if membership.user
+      %li= membership.user.email
+    - else
+      %li NO USER
     %li
       against:
       %strong 

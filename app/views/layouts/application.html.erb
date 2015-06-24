@@ -11,10 +11,12 @@
     <%= render 'layouts/header' %>
 
     <!-- provides alerts and warnings -->
-    <div class="container">
+    <div id="main_content" class="container">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "alert" %>
       <% end %>
+    
+      <div id="content" class="col-md-9 center-block">
+        <%= yield %>
+      </div>
     </div>
-
-    <%= yield %>

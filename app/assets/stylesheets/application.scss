@@ -15,27 +15,86 @@ body {
 
 .navbar-default {
   background-color: #88e;
+
+  .navbar-nav > li > a {
+    color: white;
+  }
+
 }
 .navbar-brand > a {
   color:rgb(240, 169, 74);;
 }
 
-.navbar-default .navbar-nav > li > a {
-  color: white;
+#main_content {
+  float: none;
 }
 
-
+.center-block {
+  float: none;
+}
 
 .btn-group {
   position: relative;
-  display: inline-block;
+  display: inline;
   vertical-align: middle;
 }
 
 .bet {
-  background: rgb(240, 169, 74);
-  padding:1%;
+  background: rgba(19, 132, 76, 0.29);;
+  box-shadow: 0px 2px 2px rgb(184, 184, 184);
+  padding:1em;
+  margin: 1em 0px;
+
+  .bet_title {
+    color:#005FB2;
+    font-size: 1.5em;
+    margin-left: .1em;
+  }
+  
+
+  ul {
+    list-style: none;
+    display: inline;
+    margin: 0;
+
+    li {
+      display: inline;
+      margin: .2em
+    }
+  }
 }
+
+.bet-btn-group {
+  width:100%;
+
+  .bet-btn {
+    display: inline;
+    background-color: red;
+    margin:20px;
+
+    .bet-submit {
+      width: 100%;
+      height: 60px;
+    }
+  }
+  .agree-bet-btn {
+    background-color: green;
+  } 
+}
+
+.pending-btn-group {
+
+  .pending-btn {
+    width: auto;
+    display: inline-block;
+  }
+}
+
+
+
+  
+
+
 /*
 
 .header {

@@ -1,19 +1,17 @@
-<div class="login">
-  <div class="container">
-    <div class="form">
-      
-      <h1>Create Bet</h1>
-        <p><%= current_user.email %> </p>
+<div class="login">  
+  <h1>Create Bet</h1>
+    <p><%= current_user.email %> </p>
+    
+    <%= simple_form_for @bet do |f| %>
+        <%= f.text_field :title, :placeholder => "Title", class: "form-control" %>
+        <%= f.text_area :bet, :placeholder => "Bet", class: "form-control" %>
+        <%= f.number_field :wager, :placeholder => "Wager", class: "form-control" %>
+        <%= f.number_field :odds, :placeholder => "Odds", class: "form-control" %>
         
-        <%= form_for @bet do |f| %>
-            <%= f.text_field :title, :placeholder => "Title" %>
-            <%= f.text_area :bet, :placeholder => "Bet" %>
-            <%= f.number_field :wager, :placeholder => "Wager" %>
-            <%= f.number_field :odds, :placeholder => "Odds" %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= f.submit "Create a bet", class: "btn-submit" %>
-        <% end %>
 
-    </div>
-  </div>
+
+
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.submit "Create a bet", class: "btn btn-primary" %>
+    <% end %>
 </div>

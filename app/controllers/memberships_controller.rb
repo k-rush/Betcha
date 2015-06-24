@@ -2,7 +2,7 @@ class MembershipsController < ApplicationController
 
   def index
     @bet = Bet.find(params[:bet_id])
-    @memberships = @bet.memberships
+    @memberships = Membership.all
   end
   
   def show
@@ -12,7 +12,9 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    @membership = current_user.memberships.build(bet_id: params[:bet_id], accepted: false, against: false)
+    @bet = Bet.find(params[:bet_id])
+    @membership = current_user.memberships.build(bet_id: params[:bet_id], against: params[:against], accepted: false) #set false to default in migration would be better
+    #bet_id: params[:bet_id], against: params[:membership][:against], accepted: :false)
     if @membership.save
       redirect_to :back
       #SUCCESS MESSAGE
@@ -24,9 +26,11 @@ class MembershipsController < ApplicationController
 
   def update
     @membership = Membership.find(params[:id])
-    @bet= @membership.bet
+    @membership.update(accepted: true)
     @user = @membership.user
-    if @membership.update_attributes(params.require(:membership).permit(:accepted))
+    @bet = @membership.bet
+
+    if @membership.save
       flash[:success] = "#{@user.name} joined the bet!"
       redirect_to @bet
     end

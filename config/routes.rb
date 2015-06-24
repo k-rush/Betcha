@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   end
   resources :friendships #not sure if this is correct yet.
   resources :memberships
-  
 end
