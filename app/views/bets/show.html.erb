@@ -7,17 +7,11 @@
   <li><%= @bet.wager %></li>
 </ul>
 
-<h3>Agrees</h3>
-<ul>
-  <% @agree_members.each do |agree_member| %>
-    <li><%= agree_member.email %></li>
-  <% end %>
-</ul>
+<%= render 'bet_buttons' %>
+<%= render 'members' %>
 
-<h3>Against</h3>
-<ul>
-  <% @against_members.each do |against_member| %>
-    <li><%= against_member.email %></li>
-  <% end %>
-</ul>
+
+
+
+
 

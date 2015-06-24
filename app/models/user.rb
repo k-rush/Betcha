@@ -20,12 +20,12 @@ class User < ActiveRecord::Base
   end
 
   # BETS (and bet memberships)
-   has_many :memberships
+  has_many :memberships
 
-   has_many :agree_bets,   -> { where(memberships: { accepted: true, against: false }) }, through: :memberships, source: :bet
-   has_many :against_bets, -> { where(memberships: { accepted: true, against: true }) },  through: :memberships, source: :bet
+  has_many :agree_bets,   -> { where(memberships: { accepted: true }).where(memberships: { against: false }) },  through: :memberships, source: :bet
+  has_many :against_bets, -> { where(memberships: { accepted: true }).where(memberships: { against: false }) },  through: :memberships, source: :bet
 
-   has_many :membership_requests, -> { where(memberships: { accepted: false }) }, through: :memberships, source: :bet
+  has_many :pending_bets, -> { where(memberships: { accepted: false }) }, through: :memberships, source: :bet
 
   def active_bets
     agree_bets | against_bets

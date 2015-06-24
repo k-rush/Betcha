@@ -1,0 +1,33 @@
+<h2>Agrees</h2>
+<% @agree_members.each do |member| %>
+  <li><%= member.email %></li>
+<% end %>
+
+<h4>pending</h4>
+<% @agree_requesters.each do |requester| %>
+  <li>
+    <%= requester.email %>
+    
+    <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
+    
+    <%= simple_form_for [@bet, membership] do |f| %>
+    
+      <%= f.hidden_field :accepted, accepted: true %>
+      <%= f.button :submit, "Accept", class: "btn btn-default" %>
+    <% end %>
+
+    <%= link_to "Reject", membership, method: :delete, class: 'btn btn-primary', data: { confirm: "Are you sure (GIVE ODDS AND MONIES" } %>
+    
+
+  </li>
+<% end %>
+
+<h2>Against</h2>
+<% @against_members.each do |member| %>
+  <li><%= member.email %></li>
+<% end %>
+
+<h4>pending</h4>
+<% @against_requesters.each do |requester| %>
+  <li><%= requester.email %></li>
+<% end %>

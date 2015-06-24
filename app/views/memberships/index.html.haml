@@ -1,0 +1,16 @@
+%ul
+  - @memberships.each do |membership|
+    %li
+      membership 
+      = membership.id
+    %li= membership.bet.title
+    %li= membership.user.email
+    %li
+      against:
+      %strong 
+        = membership.against
+    %li 
+      accepted: 
+      %strong
+        = membership.accepted
+    %br

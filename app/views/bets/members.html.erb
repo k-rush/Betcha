@@ -1,0 +1,13 @@
+<h3>Agrees</h3>
+<ul>
+  <% @agree_members.each do |agree_member| %>
+    <li><%= agree_member.email %></li>
+  <% end %>
+</ul>
+
+<h3>Against</h3>
+<ul>
+  <% @against_members.each do |against_member| %>
+    <li><%= against_member.email %></li>
+  <% end %>
+</ul>
