@@ -6,18 +6,14 @@ class FriendshipsController < ApplicationController
 
   def create
     #to stop current friends from saving
-    if current_user.history.any?
-      redirect_to root_url
+    @friendship = current_user.friendships.build(friend_id: params[:friend_id], accepted: false)
+  
+    if @friendship.save
+      flash[:notice] = "Friend request sent!"
+      redirect_to :back
     else
-      @friendship = current_user.friendships.build(friend_id: params[:friend_id], accepted: false)
-    
-      if @friendship.save
-        flash[:notice] = "Friend request sent!"
-        redirect_to :back
-      else
-        flash[:error] = "Unable to send friend request"
-        redirect_to :back
-      end
+      flash[:error] = "Unable to send friend request"
+      redirect_to :back
     end
   end
 
