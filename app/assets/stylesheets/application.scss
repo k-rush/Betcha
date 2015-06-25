@@ -34,7 +34,10 @@ body {
 
 }
 .navbar-brand > a {
-  color:rgb(240, 169, 74);;
+  color: #FF7E00;
+  text-shadow: 1.8px 1.4px 0px white;
+  font-size: 2em;
+  text-decoration: none;
 }
 
 #main_content {
@@ -45,6 +48,12 @@ body {
   float: none;
 }
 
+.new-bet-btn {
+  background-color: #625EFF;
+  border: none;
+  box-shadow: 1.2px 1.2px 3px rgb(140, 140, 140);
+}
+
 .btn-group {
   position: relative;
   display: inline;
@@ -52,7 +61,7 @@ body {
 }
 
 .bet {
-  background: rgba(19, 132, 76, 0.29);;
+  background: rgba(70, 208, 140, 0.29);
   box-shadow: 0px 2px 2px rgb(184, 184, 184);
   padding:1em;
   margin: 1em 0px;
