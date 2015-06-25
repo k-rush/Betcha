@@ -19,6 +19,12 @@ class User < ActiveRecord::Base
     active_friends | passive_friends
   end
 
+
+  def history
+    friends | active_requests | passive_requests
+  end
+
+
   # BETS (and bet memberships)
   has_many :memberships
 

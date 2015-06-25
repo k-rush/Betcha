@@ -11,30 +11,25 @@
     <h4>pending</h4>
     
     <% @agree_requesters.each do |requester| %>
-      <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %> 
-
+      <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %>
       <%= requester.email %>
-
-      <% render 'accept_reject_btns' %>
-
+      <%= render 'accept_reject_btns', membership: membership %>
       <br>
     <%end%>
 
   </div>
       
 
-
-
-
-
   <h2>Against</h2>
   <% @against_members.each do |member| %>
-    <li><%= member.email %></li>
+
+    <%= member.email %>
   <% end %>
 <div class="pending-members">
   <h4>pending</h4>
   <% @against_requesters.each do |requester| %>
-    <li><%= requester.email %></li>
-     <% render 'accept_reject_btns' %>
+  <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
+    <%= requester.email %>
+    <%= render 'accept_reject_btns', membership: membership %>
   <% end %>
 </div>

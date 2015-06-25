@@ -1,16 +1,24 @@
 class FriendshipsController < ApplicationController
 
-  def create
-    @friendship = current_user.friendships.build(friend_id: params[:friend_id], accepted: false)
-    
-    if @friendship.save
-      flash[:notice] = "Friend request sent!"
-      redirect_to :back
-    else
-      flash[:error] = "Unable to send friend request"
-      redirect_to :back
-    end
+  def index
+    @friendships = Friendship.all
+  end
 
+  def create
+    #to stop current friends from saving
+    if current_user.history.any?
+      redirect_to root_url
+    else
+      @friendship = current_user.friendships.build(friend_id: params[:friend_id], accepted: false)
+    
+      if @friendship.save
+        flash[:notice] = "Friend request sent!"
+        redirect_to :back
+      else
+        flash[:error] = "Unable to send friend request"
+        redirect_to :back
+      end
+    end
   end
 
   def update
@@ -18,7 +26,7 @@ class FriendshipsController < ApplicationController
     @friendship.update(accepted: true)
     
     if @friendship.save
-      redirect_to root_url, notice: "Successfully added new friend!"
+      redirect_to :back, notice: "Successfully added new friend!"
     else
       redirect_to root_url, notice: "Something went wrong, friend not added"
     end

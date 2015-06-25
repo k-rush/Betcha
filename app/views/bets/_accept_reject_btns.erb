@@ -2,12 +2,12 @@
 
         <!--ACCEPT MEMBER BUTTON -->
         <div class='pending-btn accept-btn'>
-          <%= link_to "Accept", bet_membership_path(bet_id: @bet), method: :put %>
+          <%= link_to "Accept", bet_membership_path(membership, bet_id: @bet), method: :put %>
         </div>
 
         <!--REJECT MEMBER BUTTON -->
         <div class="pending-btn reject-btn">
-          <%= link_to "Reject", bet_membership_path(bet_id: @bet.id), method: :delete, data: { confirm: "Are you sure (GIVE ODDS AND POTENTIAL MONIES)" } , class: 'btn btn-default btn-sm' %>
+          <%= link_to "Reject", bet_membership_path(membership, bet_id: @bet.id), method: :delete, data: { confirm: "Are you sure (GIVE ODDS AND POTENTIAL MONIES)" } , class: 'btn btn-default btn-sm' %>
         </div>
         
       </div>
