@@ -1,5 +1,15 @@
 <h2><%= @user.name %></h2>
 <h5><%= @user.email %></h5>
 
-
 <%= render 'friendships/friend_links' %>
+
+        <% @bets.each do |bet| %>
+          <div class="bet">
+            <ul>
+              <%= link_to bet.title, bet, class: "bet_title" %>
+              <li>Wager: <%= bet.wager %> </li>
+              <li>Odds: <%= bet.odds %> </li>
+          </div>
+        <% end %>
+
+

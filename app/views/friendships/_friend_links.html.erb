@@ -1,3 +1,4 @@
+
 <% unless current_user == @user %>
   <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
 <% end %>
@@ -17,7 +18,7 @@
 <% if current_user == @user %>
     <h4>Friend Requests</h4>
     <ul>
-        <% @user.passive_requests.each do |requester| %>
+        <% @user.requesters.each do |requester| %>
         <li>
           <%= requester.email %> 
           <%= link_to "Accept", friendship_path(id: requester), method: :put %> 

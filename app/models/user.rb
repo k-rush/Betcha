@@ -14,13 +14,21 @@ class User < ActiveRecord::Base
   has_many :active_friends,   -> { where(friendships: { accepted: true }) },  through: :friendships,         source: :friend # source: tells you who the :active_friend is
   has_many :passive_friends,  -> { where(friendships: { accepted: true }) },  through: :passive_friendships, source: :user
 
-  has_many :active_requests,  -> { where(friendships: { accepted: false }) }, through: :friendships,         source: :friend
-  has_many :passive_requests, -> { where(friendships: { accepted: false }) }, through: :passive_friendships, source: :user
+  has_many :requestees,  -> { where(friendships: { accepted: false }) }, through: :friendships,         source: :friend
+  has_many :requesters,  -> { where(friendships: { accepted: false }) }, through: :passive_friendships, source: :user
 
   def friends
     active_friends | passive_friends
   end
 
+
+  def has_requested(user)
+    self.requestees.include? user
+  end
+
+  def knows(user)
+    self.friends.find(user) || self.requesters.find(user) || self.requestees.find(user)
+  end
 
   # BETS (and bet memberships)
   has_many :memberships
@@ -32,6 +40,10 @@ class User < ActiveRecord::Base
 
   def active_bets
     agree_bets | against_bets
+  end
+
+  def entered_bets
+    active_bets | pending_bets
   end
 
 end
