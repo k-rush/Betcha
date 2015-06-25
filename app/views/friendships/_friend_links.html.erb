@@ -7,6 +7,9 @@
       <% end %>
 <% elsif current_user == @user %>
 
+<% elsif @user.friends_with? current_user # acknowledge friendship %>
+  <p>Friends for (SOME AMOUNT OF TIME)</p>
+
 <% elsif current_user.is_requesting? @user # tell current_user the request is waiting on other person%>
   <p>Friend requested!</p>
 
@@ -18,19 +21,4 @@
   <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post, class: 'btn btn-primary' %>
 <% end %>
 
-<% if current_user == @user %>
-  <h4>Your friends</h4>
-<% else %>
-  <h4><%= @user.name %>'s friends</h4>
-<% end %>
-<% @user.friends.each do |friend| %>
-  <% if current_user == friend %>
-    <%= link_to "You", friend %>
-  <% else %> 
-    <%= link_to friend.name, friend %>
-  <% end %>
-    <% if current_user == @user %>
-      <%= link_to "Remove", friendship_path(id: friend), method: :delete, data: { confirm: "Remove #{friend.name} from your friends?" } %>
-    <% end %>
-  <br>
-<% end %>
+

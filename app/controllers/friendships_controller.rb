@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.friendships.build(friend_id: params[:friend_id], accepted: false)
   
     if @friendship.save
-      flash[:notice] = "Friend request sent!"
+      flash[:notice] = nil #will say under friend name
       redirect_to :back
     else
       flash[:error] = "Unable to send friend request"

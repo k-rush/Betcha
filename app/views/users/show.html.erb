@@ -1,9 +1,7 @@
 <h2><%= @user.name %></h2>
-
-<% if @user.friends_with? current_user # acknowledge friendship %>
-  <p>Friends for (SOME AMOUNT OF TIME)</p>
-<% end %>
+<%= render 'friendships/friend_links' %>
 <br>
+
 
 <% if @user != current_user %>
   <h3><%= @user.name %>'s Bets</h3>
@@ -19,7 +17,24 @@
 <% end %>
 
 <br>
-<%= render 'friendships/friend_links' %>
+
+<% if current_user == @user %>
+  <h4>Your friends</h4>
+<% else %>
+  <h4><%= @user.name %>'s friends</h4>
+<% end %>
+<% @user.friends.each do |friend| %>
+  <% if current_user == friend %>
+    <%= link_to "You", friend %>
+  <% else %> 
+    <%= link_to friend.name, friend %>
+  <% end %>
+    <% if current_user == @user %>
+      <%= link_to "Remove", friendship_path(id: friend), method: :delete, data: { confirm: "Remove #{friend.name} from your friends?" } %>
+    <% end %>
+  <br>
+<% end %>
+
 
 
 <br><br>
