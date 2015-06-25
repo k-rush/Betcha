@@ -1,29 +1,39 @@
-
-<% unless current_user == @user %>
-  <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
-<% end %>
-
-<h4>Friends</h4>
-<ul>
-  <% @user.friends.each do |friend| %>
-    <li>
-      <%= link_to friend.email, friend %> 
-      <% if current_user == @user %>
-        <%= link_to "Remove", friendship_path(id: friend), method: :delete %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<% if current_user == @user %>
-    <h4>Friend Requests</h4>
-    <ul>
+<% if current_user == @user && current_user.requesters.any? # show your friend requests%> 
+    <h4>New Friend Requests!</h4>
         <% @user.requesters.each do |requester| %>
-        <li>
-          <%= requester.email %> 
+          <%= link_to requester.name, requester %> 
           <%= link_to "Accept", friendship_path(id: requester), method: :put %> 
           <%= link_to "Decline", friendship_path(id: requester), method: :delete %>
-        </li>
       <% end %>
-    </ul>
+<% elsif current_user == @user %>
+
+<% elsif current_user.is_requesting? @user # tell current_user the request is waiting on other person%>
+  <p>Friend requested!</p>
+
+<% elsif @user.is_requesting? current_user # give option to accept or reject friend request %>
+  <%= link_to "Accept Friend Request", friendship_path(id: @user), method: :put, class: "btn btn-primary" %>
+  <%= link_to "Reject Friend Request", friendship_path(id: @user), method: :delete, class: "btn btn-default" %>
+
+<% elsif !@user.friends_with? current_user # friend request button %>
+  <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post, class: 'btn btn-primary' %>
+
+<% elsif @user.friends_with? current_user # acknowledge friendship %>
+  <p>Friends for (SOME AMOUNT OF TIME)</p>
+<% end %>
+
+<% if current_user == @user %>
+  <h4>Your friends</h4>
+<% else %>
+  <h4><%= @user.name %>'s friends</h4>
+<% end %>
+<% @user.friends.each do |friend| %>
+  <% if current_user == friend %>
+    <%= link_to "You", friend %>
+  <% else %> 
+    <%= link_to friend.name, friend %>
+  <% end %>
+    <% if current_user == @user %>
+      <%= link_to "Remove", friendship_path(id: friend), method: :delete, data: { confirm: "Remove #{friend.name} from your friends?" } %>
+    <% end %>
+  <br>
 <% end %>

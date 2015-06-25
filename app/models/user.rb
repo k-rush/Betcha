@@ -21,20 +21,34 @@ class User < ActiveRecord::Base
     active_friends | passive_friends
   end
 
-
-  def has_requested(user)
-    self.requestees.include? user
+  def friends_with?(other_user)
+    self.friends.include? other_user
   end
 
-  def knows(user)
-    self.friends.find(user) || self.requesters.find(user) || self.requestees.find(user)
+  def is_requesting?(other_user)
+    self.requestees.include? other_user
   end
+
+=begin # hmm not working...
+
+
+  def history?(other_user)
+    if self.is_requesting? other_user || other_user.is_requesting? self || self.friends_with? other_user
+      true
+    else
+      false
+    end
+  end
+
+
+=end
+
 
   # BETS (and bet memberships)
   has_many :memberships
 
   has_many :agree_bets,   -> { where(memberships: { accepted: true }).where(memberships: { against: false }) },  through: :memberships, source: :bet
-  has_many :against_bets, -> { where(memberships: { accepted: true }).where(memberships: { against: true }) },  through: :memberships, source: :bet
+  has_many :against_bets, -> { where(memberships: { accepted: true }).where(memberships: { against: true }) },   through: :memberships, source: :bet
 
   has_many :pending_bets, -> { where(memberships: { accepted: false }) }, through: :memberships, source: :bet
 

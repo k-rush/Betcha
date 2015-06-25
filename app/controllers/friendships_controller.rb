@@ -22,7 +22,7 @@ class FriendshipsController < ApplicationController
     @friendship.update(accepted: true)
     
     if @friendship.save
-      redirect_to :back, notice: "Successfully added new friend!"
+      redirect_to :back, notice: "Added new friend!"
     else
       redirect_to root_url, notice: "Something went wrong, friend not added"
     end
