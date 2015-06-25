@@ -21,6 +21,18 @@ body {
   }
 
 }
+
+@media only screen and (max-width : 767px) {
+
+  .navbar-right {
+    clear: both;
+  }
+
+  .navbar-nav {
+    margin: 7.5px 0px;
+}
+
+}
 .navbar-brand > a {
   color:rgb(240, 169, 74);;
 }
@@ -69,16 +81,25 @@ body {
 
   .bet-btn {
     display: inline;
-    background-color: red;
     margin:20px;
+    border:none;
+
+    a {
+      color: white;
+    }
 
     .bet-submit {
       width: 100%;
       height: 60px;
     }
   }
-  .agree-bet-btn {
-    background-color: green;
+  .agree-btn {
+    background-color: rgb(112, 205, 112);;
+
+
+  } 
+  .against-btn {
+    background-color: rgb(237, 71, 71);;
   } 
 }
 
@@ -88,6 +109,15 @@ body {
     width: auto;
     display: inline-block;
   }
+}
+
+.wager {
+  font-size: 3em;
+  margin-right: 50px;
+}
+
+.odds {
+  font-size: 1.3em;
 }
 
 

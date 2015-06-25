@@ -1,13 +1,19 @@
 <div class="login">  
-  <h1>Create Bet</h1>
-    <p><%= current_user.email %> </p>
+  <h1>I Betcha that...</h1>
     
     <%= simple_form_for @bet do |f| %>
-        <%= f.text_field :title, :placeholder => "Title", class: "form-control" %>
-        <%= f.text_area :bet, :placeholder => "Bet", class: "form-control" %>
-        <%= f.number_field :wager, :placeholder => "Wager", class: "form-control" %>
-        <%= f.number_field :odds, :placeholder => "Odds", class: "form-control" %>
-        
+        <div class="form-group">
+            <%= f.text_field :title, placeholder: "Cubs win world series", class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.text_area :bet, placeholder: "Conditions", class: "form-control" %>
+        </div>  
+        <div class="form-group">
+            <%= f.number_field :wager, placeholder: "Wager", class: "form-control" %>
+        </div>  
+        <div class="form-group">
+            <%= f.number_field :odds, placeholder: "Odds", class: "form-control" %>
+        </div>
 
 
 

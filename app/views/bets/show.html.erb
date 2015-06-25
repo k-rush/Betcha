@@ -1,10 +1,13 @@
-<h1><%= @bet.title %></h1>
+<h2><%= @bet.title %></h2>
 
 <ul>
-  <li><%= @bet.bet %></li>
-  <li><%= @bet.created_at %></li>
-  <li><%= @bet.odds %></li>
-  <li><%= @bet.wager %></li>
+  <%= @bet.created_at %>
+  <p><%= @bet.bet %></p>
+  
+  <span class='wager'>$<%= @bet.wager %></span>
+  <span class='odds'><%= @bet.odds %>:1</span>
+
+
 </ul>
 
 <%= render 'bet_buttons' %>

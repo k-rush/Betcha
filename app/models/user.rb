@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :name, presence: true
+
 # FRIENDS (and friendships)
   has_many :friendships
   has_many :passive_friendships,  class_name: "Friendship",
@@ -24,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :memberships
 
   has_many :agree_bets,   -> { where(memberships: { accepted: true }).where(memberships: { against: false }) },  through: :memberships, source: :bet
-  has_many :against_bets, -> { where(memberships: { accepted: true }).where(memberships: { against: false }) },  through: :memberships, source: :bet
+  has_many :against_bets, -> { where(memberships: { accepted: true }).where(memberships: { against: true }) },  through: :memberships, source: :bet
 
   has_many :pending_bets, -> { where(memberships: { accepted: false }) }, through: :memberships, source: :bet
 

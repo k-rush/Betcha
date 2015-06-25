@@ -1,10 +1,10 @@
 <div class="bet-btn-group">
-      <div class="bet-btn agree-btn btn btn-primary bet-submit">
-        <%= link_to "Agree!", memberships_path(bet_id: @bet, user_id: current_user, against: false), method: :post %>
+    <div class="bet-btn agree-btn btn btn-primary bet-submit">
+      <%= link_to "Agree!", memberships_path(bet_id: @bet, user_id: current_user, against: false), method: :post %>
 
-      </div>
+    </div>
 
-      <div class="bet-btn against-btn">
-         <%= link_to "Against!", memberships_path(bet_id: @bet, user_id: current_user, against: true), method: :post %>
-      </div>
+    <div class="bet-btn against-btn btn btn-primary bet-submit">
+       <%= link_to "Against!", memberships_path(bet_id: @bet, user_id: current_user, against: true), method: :post %>
+    </div>
 </div>

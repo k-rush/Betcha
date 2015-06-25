@@ -16,11 +16,11 @@ class MembershipsController < ApplicationController
     @membership = current_user.memberships.build(bet_id: params[:bet_id], against: params[:against], accepted: false) #set false to default in migration would be better
     #bet_id: params[:bet_id], against: params[:membership][:against], accepted: :false)
     if @membership.save
+      flash[:notice] = "Bet placed! Pending approval..."
       redirect_to :back
-      #SUCCESS MESSAGE
     else
+      flash[:notice] = "Problem placing bet"
       redirect_to :back
-      #FAIL MESSAGE
     end
   end
 
