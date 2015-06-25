@@ -1,16 +1,26 @@
 <h2><%= @user.name %></h2>
+
+<% if @user.friends_with? current_user # acknowledge friendship %>
+  <p>Friends for (SOME AMOUNT OF TIME)</p>
+<% end %>
 <br>
 
+<% if @user != current_user %>
+  <h3><%= @user.name %>'s Bets</h3>
+
+  <% @bets.each do |bet| %>
+    <div class="bet">
+      <ul>
+        <%= link_to bet.title, bet, class: "bet_title" %>
+        <li>Wager: <%= bet.wager %> </li>
+        <li>Odds: <%= bet.odds %> </li>
+    </div>
+  <% end %>
+<% end %>
+
+<br>
 <%= render 'friendships/friend_links' %>
 
-<% @bets.each do |bet| %>
-  <div class="bet">
-    <ul>
-      <%= link_to bet.title, bet, class: "bet_title" %>
-      <li>Wager: <%= bet.wager %> </li>
-      <li>Odds: <%= bet.odds %> </li>
-  </div>
-<% end %>
 
 <br><br>
 <h5>ALL USERS (for development convenience)</h5>

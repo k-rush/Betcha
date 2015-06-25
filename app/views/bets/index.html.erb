@@ -3,7 +3,7 @@
 <div class="bets">
   <div class='active-bets'>
     <% if @active_bets %>
-    <h2>Active Bets</h2>
+    <h2>Your Bets</h2>
       
       <% @active_bets.each do |bet| %>
           <div class="bet">
@@ -35,9 +35,25 @@
 
         <br>
       <% end %>
+  </div
 
+   <div class="all-bets">
+    <% if @all_bets %>
+    <h2>All Bets</h2>
+
+      <% @all_bets.each do |bet| %>
+          <div class="bet">
+            <ul>
+              <span class="bet_title"><%= link_to bet.title, bet %></span>
+              <br>
+              <li>Wager: <%= bet.wager %> </li>
+              <li>Odds: <%= bet.odds %> </li>
+          </div>
+      <% end %>
+
+        <br>
+      <% end %>
   </div>
-
 
 </div>
       
