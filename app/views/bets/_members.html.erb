@@ -3,7 +3,7 @@
   <div class='active-members'>
     <h2>Agrees</h2>
     <% @agree_members.each do |member| %>
-      <li><%= member.email %></li>
+      <%= link_to member.name, member %>
     <% end %>
   </div>
 
@@ -12,7 +12,7 @@
     
     <% @agree_requesters.each do |requester| %>
       <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %>
-      <%= requester.email %>
+      <%= link_to member.name, member %>
       <%= render 'accept_reject_btns', membership: membership %>
       <br>
     <%end%>
@@ -23,13 +23,14 @@
   <h2>Against</h2>
   <% @against_members.each do |member| %>
 
-    <%= member.email %>
+    <%= link_to member.name, member %>
+
   <% end %>
 <div class="pending-members">
   <h4>pending</h4>
   <% @against_requesters.each do |requester| %>
   <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
-    <%= requester.email %>
+    <%= link_to member.name, member %>
     <%= render 'accept_reject_btns', membership: membership %>
   <% end %>
 </div>
