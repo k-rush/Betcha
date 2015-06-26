@@ -1,20 +1,35 @@
 class BetsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show, :new, :create]
-	def index
-		@bets = Bet.all #changed from @bet =
-	end
+  before_action :authenticate_user!, only: [:index, :new, :create]
+	
+  def index
+		  @active_bets = current_user.active_bets # !!! check syntax and logic
+      @pending_bets = current_user.pending_bets
+      @all_bets = Bet.all
+  end
+
+  def show
+    @bet = Bet.find(params[:id])
+
+    @current_membership = current_user.memberships.find_by(bet_id: @bet)
+    
+    @agree_members = @bet.agree_members.all
+    @against_members = @bet.against_members.all
+    
+    @agree_requesters = @bet.agree_requesters.all
+    @against_requesters = @bet.against_requesters.all
+  end
   
   def new
-    @bet = current_user.bets.build
+    @bet = Bet.new
   end
   
   def create 
-  	@bet = current_user.bets.build(bet_params) # changed form Bet.new
-  	if @bet.save 
-    	redirect_to '/bets'
+  	@bet = Bet.new(bet_params)
+  	if @bet.save
+      redirect_to @bet
  	 	else 
     	render 'new' 
-  		end 
+  	end 
 	end
   
 	private 

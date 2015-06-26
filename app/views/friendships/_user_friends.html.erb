@@ -1,0 +1,24 @@
+<% if current_user == @user %>
+  <h4>Your friends</h4>
+
+<% else %>
+  <h4><%= @user.name %>'s friends</h4>
+<% end %>
+
+
+
+<% @user.friends.each do |friend| %>
+  
+  <% if current_user == friend %>
+    <%= link_to "You", friend %>
+  
+  <% else %> 
+    <%= link_to friend.name, friend %>
+  <% end %>
+    
+  <% if current_user == @user %> 
+    <%= link_to "Remove", friendship_path(id: friend), method: :delete, data: { confirm: "Remove #{friend.name} from your friends?" } %>
+  <% end %>
+  
+<% end %>
+

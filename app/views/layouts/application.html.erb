@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Betcha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,24 +11,15 @@
   </head>
   <body>
 
-  <div class="header">
-    <div class="container">
+    <%= render 'layouts/header' %>
 
-      <div class="nav">
-        <% if user_signed_in? #changed from current_user %> 
-          <ul>
-            <li><%= link_to "Bets", root_url%></li>
-            <li><%= link_to "Profile", current_user%></li>
-            <li><%= link_to "Log out", destroy_user_session_path, method: "delete" %></li>
-          </ul>
-        <% else %>
-          <ul>
-            <li><%= link_to "Log in", new_user_session_path %></a></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></a></li>
-          </ul>
-        <% end %>
-      </div>
+    <!-- provides alerts and warnings -->
+    <div id="main_content" class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert" %>
+      <% end %>
     
+<<<<<<< HEAD
     </div>
   </div>
 
@@ -37,3 +31,9 @@
   </div>
 
   <%= yield %>
+=======
+      <div id="content" class="col-md-9 center-block">
+        <%= yield %>
+      </div>
+    </div>
+>>>>>>> c9ba4d71a0b00d262b609db0a32b1af3cbaa45dd
