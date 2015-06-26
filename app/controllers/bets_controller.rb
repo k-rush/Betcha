@@ -17,6 +17,8 @@ class BetsController < ApplicationController
     
     @agree_requesters = @bet.agree_requesters.all
     @against_requesters = @bet.against_requesters.all
+
+    @rounds = @bet.rounds.all # paginate this
   end
   
   def new

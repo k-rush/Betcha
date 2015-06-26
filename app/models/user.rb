@@ -30,8 +30,6 @@ class User < ActiveRecord::Base
   end
 
 =begin # hmm not working...
-
-
   def history?(other_user)
     if self.is_requesting? other_user || other_user.is_requesting? self || self.friends_with? other_user
       true
@@ -39,12 +37,10 @@ class User < ActiveRecord::Base
       false
     end
   end
-
-
 =end
 
 
-  # BETS (and bet memberships)
+# BETS (and bet memberships)
   has_many :memberships
 
   has_many :agree_bets,   -> { where(memberships: { accepted: true }).where(memberships: { against: false }) },  through: :memberships, source: :bet
@@ -56,8 +52,46 @@ class User < ActiveRecord::Base
     agree_bets | against_bets
   end
 
-  def entered_bets
+  def joined_bets
     active_bets | pending_bets
   end
 
+# ROUNDS (and contracts)
+has_many :contracts
+#FIX LOGIC
+has_many :agree_maybe_wins,     -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+has_many :against_maybe_wins,   -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+
+has_many :agree_maybe_loses,    -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+has_many :against_maybe_loses,  -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+
+
+has_many :agree_wins,   -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+has_many :against_wins, -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+
+
+has_many :agree_losses,   -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+has_many :against_losses, -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+
+
+
+def potential_wins
+  agree_maybe_wins | against_maybe_wins
 end
+
+def wins
+  agree_wins | against_wins
+end
+
+def potential_losses
+  agree_maybe_wins | against_maybe_wins
+end
+
+def losses
+  agree_wins | against_wins
+end
+
+
+
+end
+
