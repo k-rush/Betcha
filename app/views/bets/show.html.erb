@@ -1,19 +1,22 @@
-<h2><%= @bet.title %></h2>
+<div class='bet'>
+
+  <h2 class='bet_title'><%= @bet.title %></h2>
 
 
 
-<%= @bet.created_at %>
-<p><%= @bet.bet %></p>
+  <%= @bet.created_at %>
+  <p><%= @bet.bet %></p>
 
-<span class='wager'>$<%= @bet.wager %></span>
-<span class='odds'><%= @bet.odds %>:1</span>
+  <span class='wager'>$<%= @bet.wager %></span>
+  <span class='odds'><%= @bet.odds %>:1</span>
+
+</div>
 
 
 
+  <%= render 'bet_buttons' %>
+  <%= render 'members' %>
 
-
-<%= render 'bet_buttons' %>
-<%= render 'members' %>
 
 
 

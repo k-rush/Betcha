@@ -68,7 +68,7 @@ body {
 
   .bet_title {
     color:#005FB2;
-    font-size: 1.5em;
+    font-size: 2em;
     margin-left: .1em;
   }
   
@@ -87,6 +87,7 @@ body {
 
 .bet-btn-group {
   width:100%;
+  height: 20px;
 
   .bet-btn {
     display: inline;
@@ -95,6 +96,7 @@ body {
 
     a {
       color: white;
+      height: 200px;
     }
 
     .bet-submit {
@@ -108,7 +110,7 @@ body {
 
   } 
   .against-btn {
-    background-color: rgb(237, 71, 71);;
+    background-color: #FF2727;;
   } 
 }
 

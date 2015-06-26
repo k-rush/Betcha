@@ -1,13 +1,12 @@
 <div class="bet-btn-group">
-  <% if @current_relationship %>
-    <%= link_to "Leave Bet", @current_relationship, method: :delete, data: { confirm: "Are you sure (GIVE ODDS AND POTENTIAL MONIES)" } , class: 'btn btn-default btn-sm' %>
+  <% if @current_membership %>
+    <%= link_to "Leave Bet", @current_membership, method: :delete, data: { confirm: "Are you sure (GIVE ODDS AND POTENTIAL MONIES)" } , class: 'btn btn-default btn-sm' %>
    
   <% else %>
-    <div class="bet-btn agree-btn btn btn-primary bet-submit">
+    <div class="bet-btn agree-btn btn">
       <%= link_to "Agree!", memberships_path(bet_id: @bet, user_id: current_user, against: false), method: :post %>
-
     </div>
-    <div class="bet-btn against-btn btn btn-primary bet-submit">
+    <div class="bet-btn against-btn btn">
        <%= link_to "Against!", memberships_path(bet_id: @bet, user_id: current_user, against: true), method: :post %>
     </div>
 

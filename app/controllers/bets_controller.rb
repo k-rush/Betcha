@@ -10,7 +10,7 @@ class BetsController < ApplicationController
   def show
     @bet = Bet.find(params[:id])
 
-    @current_relationship = current_user.memberships.find_by(bet_id: @bet)
+    @current_membership = current_user.memberships.find_by(bet_id: @bet)
     
     @agree_members = @bet.agree_members.all
     @against_members = @bet.against_members.all

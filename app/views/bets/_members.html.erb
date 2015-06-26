@@ -1,36 +1,52 @@
 <div class='bet-members'>
-  
-  <div class='active-members'>
-    <h2>Agrees</h2>
-    <% @agree_members.each do |member| %>
-      <%= link_to member.name, member %>
-    <% end %>
-  </div>
 
-  <div class="pending-members">
-    <h4>pending</h4>
-    
-    <% @agree_requesters.each do |requester| %>
-      <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %>
-      <%= link_to requester.name, requester %>
-      <%= render 'accept_reject_btns', membership: membership %>
-      <br>
-    <%end%>
+<h2>Agrees</h2>
+<% if @agree_members.any? %>
 
-  </div>
-      
+        <div class='active-members'>
 
-  <h2>Against</h2>
-  <% @against_members.each do |member| %>
+          <% @agree_members.each do |member| %>
+            <%= link_to member.name, member %>
+          <% end %>
+        </div>
+<% else%>
+  <p>(no one agrees yet)</p>
+<% end %>
 
-    <%= link_to member.name, member %>
+<% if @agree_requesters.any? %>
+        <div class="pending-members">
+          
+          <h4>pending</h4>
+          <% @agree_requesters.each do |requester| %>
+            <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %>
+            <%= link_to requester.name, requester %>
+            <%= render 'accept_reject_btns', membership: membership %>
+            <br>
+          <%end%>
 
-  <% end %>
-<div class="pending-members">
-  <h4>pending</h4>
-  <% @against_requesters.each do |requester| %>
-  <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
-    <%= link_to requester.name, requester %>
-    <%= render 'accept_reject_btns', membership: membership %>
-  <% end %>
-</div>
+        </div>
+
+<% end %>
+
+
+<h2>Against</h2>           
+<% if @against_members.any? %>
+ 
+        <% @against_members.each do |member| %>
+          <%= link_to member.name, member %>
+        <% end %>
+<% else%>
+  <p>(no one's against yet)</p>
+<% end %>
+
+<% if @against_requesters.any? %>
+      <div class="pending-members">
+        <h4>pending</h4>
+        <% @against_requesters.each do |requester| %>
+        <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
+          <%= link_to requester.name, requester %>
+          <%= render 'accept_reject_btns', membership: membership %>
+        <% end %>
+      </div>
+
+<% end %>
