@@ -1,0 +1,24 @@
+/ For developement convenience
+
+%ul
+  - @memberships.each do |membership|
+    %li
+      membership 
+      = membership.id
+    - if membership.bet
+      %li= membership.bet.title
+    - else
+      %li NO BET
+    - if membership.user
+      %li= membership.user.email
+    - else
+      %li NO USER
+    %li
+      against:
+      %strong 
+        = membership.against
+    %li 
+      accepted: 
+      %strong
+        = membership.accepted
+    %br

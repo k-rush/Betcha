@@ -1,0 +1,38 @@
+<!-- if at your own profile and you have a friend request, show your friend requests -->
+
+<% if current_user == @user && current_user.requesters.any? %> 
+    
+  <h4>New Friend Requests!</h4>
+
+    <% @user.requesters.each do |requester| %>
+      <%= link_to requester.name, requester %> 
+      <%= link_to "Accept", friendship_path(id: requester), method: :put %> 
+      <%= link_to "Decline", friendship_path(id: requester), method: :delete %>
+    <% end %>
+
+<!-- if at your own profile, don't show friend status.
+      shoul'd be any friend status possible, eventually -->     
+<% elsif current_user == @user # then do nothing%>
+
+
+<!-- acknowledge friendship  -->
+<% elsif @user.friends_with? current_user %>
+  <p>Friends for (SOME AMOUNT OF TIME)</p>
+
+<!-- if you're waiting for a friend to respond to a request -->
+<% elsif current_user.is_requesting? @user %>
+  <p>Friend requested!</p>
+
+<!-- if you're visiting a person who friend requested you, give option to accept or reject friend request -->
+<% elsif @user.is_requesting? current_user #  %>
+  <%= link_to "Accept Friend Request", friendship_path(id: @user), method: :put, class: "btn btn-primary" %>
+  <%= link_to "Reject Friend Request", friendship_path(id: @user), method: :delete, class: "btn btn-default" %>
+
+<!-- friend request button -->
+<% elsif !@user.friends_with? current_user  %>
+  <%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post, class: 'btn btn-primary' %>
+
+<% end %>
+
+
+

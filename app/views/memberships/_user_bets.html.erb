@@ -1,0 +1,16 @@
+ <% if @user_bets %>
+    <h2><%= @user.name %>'s bets</h2>
+      
+      <% @user_bets.each do |bet| %>
+          <div class="bet">
+            <%= link_to bet.title, bet, class: "bet-title" %>
+            <br>
+             <ul> 
+              <li>Wager: <%= bet.wager %> </li>
+              <li>Odds: <%= bet.odds %> </li>
+            </ul>
+          </div>
+      <% end %>
+      <br>
+
+<% end %>

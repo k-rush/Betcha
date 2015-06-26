@@ -1,0 +1,11 @@
+- @friendships.each do |friendship|
+  %li
+    friendship: 
+    = friendship.id
+  %li= friendship.user.email
+  %li= friendship.friend.email
+  %li
+    accepted:
+    = friendship.accepted
+  %br
+  %br
