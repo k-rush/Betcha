@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pot: 1
+  bet_id: 1
+  odds: 1
+  signed: false
+  agree_won: false
+
+two:
+  pot: 1
+  bet_id: 1
+  odds: 1
+  signed: false
+  agree_won: false
