@@ -19,8 +19,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
   resources :bets do
-    resources :memberships
+    resources :rounds do
+      resources :contracts
+    end
+    resources :memberships #might be able to get rid of this
   end
-  resources :friendships #not sure if this is correct yet.
+  resources :friendships
   resources :memberships
 end

@@ -1,0 +1,11 @@
+%h3
+  = @user.name
+  's bet history:
+
+- if @rounds
+  %ul
+    - @rounds.each do |round|
+      .bet
+        = link_to "#{round.bet.title} round #{round.id}", round.bet
+
+%br

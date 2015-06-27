@@ -58,12 +58,15 @@ class User < ActiveRecord::Base
 
 # ROUNDS (and contracts)
 has_many :contracts
-#FIX LOGIC
-has_many :agree_maybe_wins,     -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
-has_many :against_maybe_wins,   -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+has_many :rounds, through: :contracts
 
-has_many :agree_maybe_loses,    -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
-has_many :against_maybe_loses,  -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+=begin
+#FIX LOGIC
+has_many :agree_potential_wins,     -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+has_many :against_potential_wins,   -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+
+has_many :agree_potential_loses,    -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
+has_many :against_potential_loses,  -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
 
 
 has_many :agree_wins,   -> { where(contracts: { agree: true }).where(memberships: { against: false }) },  through: :contracts, source: :round
@@ -84,7 +87,7 @@ def wins
 end
 
 def potential_losses
-  agree_maybe_wins | against_maybe_wins
+  agree_potential_wins | against_potential_wins
 end
 
 def losses
@@ -93,5 +96,6 @@ end
 
 
 
-end
 
+=end
+end

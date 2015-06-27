@@ -1,0 +1,22 @@
+%h2 
+  Contracts for round 
+  =@round.id
+  of
+  = link_to @bet.title, @bet
+
+%h2 Agreed:
+- if @agree_players
+  %ul
+    = @agree_players.each do |player|
+      %li= link_to player.name, player
+      = simple_form_for [@bet, @round, @round.contracts.build] do |f|
+        = f.hidden_field :user_id, value: player.id
+        = f.submit "Accept", class: 'btn btn-defualut'
+
+%h2 Against:
+- if @against_players
+  %ul
+    = @against_players.each do |player|
+      %li= link_to player.name, player
+
+

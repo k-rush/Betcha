@@ -1,0 +1,7 @@
+%br
+
+- if @current_membership
+
+  = link_to "Agree wins!", bet_rounds_path(@bet), method: :post, class: 'round-btn agree-wins-btn btn btn-default'
+
+  = link_to "Against wins!", bet_rounds_path(@bet), method: :post, class: 'round-btn against-wins-btn btn btn-default'

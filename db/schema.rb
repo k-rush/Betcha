@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624221015) do
+ActiveRecord::Schema.define(version: 20150626053416) do
 
   create_table "bets", force: :cascade do |t|
     t.text     "bet"
     t.text     "title"
     t.integer  "wager"
     t.integer  "odds"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "round_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,6 +45,16 @@ ActiveRecord::Schema.define(version: 20150624221015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "against"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "pot"
+    t.integer  "bet_id"
+    t.integer  "odds"
+    t.boolean  "signed"
+    t.boolean  "agree_won"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

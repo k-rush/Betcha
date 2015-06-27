@@ -15,4 +15,11 @@ class Bet < ActiveRecord::Base
     agree_requesters | against_requesters
   end
 
+  has_many :rounds
+
+  #has_many :agree_won_rounds
+  #has_many :against_won_rounds
+
+
+
 end
