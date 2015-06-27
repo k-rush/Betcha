@@ -3,7 +3,7 @@
     .round
       round: 
       = round.id
-      - round.players.each do |player|
+      - round.users.each do |player|
         %ul
           %li= link_to player.name, player
 

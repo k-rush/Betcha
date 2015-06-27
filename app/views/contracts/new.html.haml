@@ -4,24 +4,44 @@
   of
   = link_to @bet.title, @bet
 
-%h2 Agreed:
-- if @agree_players
-  %ul
-    = @agree_players.each do |player|
-      %li= link_to player.name, player
-      - unless player.rounds.include? @round
-        = simple_form_for [@bet, @round, @round.contracts.build] do |f|
-          = f.hidden_field :user_id, value: player.id
-          = f.submit "Accept", class: 'btn btn-defualut'
 
-%h2 Against:
-- if @against_players
-  %ul
-    = @against_players.each do |player|
-      %li= link_to player.name, player
-      - unless player.rounds.include? @round
-        = simple_form_for [@bet, @round, @round.contracts.build] do |f|
-          = f.hidden_field :user_id, value: player.id
-          = f.submit "Accept", class: 'btn btn-defualut'
+/ single form for all contracts (doesnt work yet)
+
+      
+/ giving contracts created in Contracts new action, no id's show and not saving to DB
+%ul
+  - @round.contracts.each do |contract|
+    %li= contract.user.name
+    %li= contract.id
+
+.bet
+  .bet_title
+    = @bet.title
+
+
+
+  = @bet.created_at
+  = @bet.bet 
+
+  .wager
+    $
+    = @bet.wager
+  .odds
+    = @bet.odds
+    = ": 1"
+
+
+
+
+= render 'memberships/bet_buttons'
+= render 'rounds/round_buttons'
+
+= render 'memberships/bet_members'
+= render 'rounds/bet_rounds'
+
+
+
+
+
 
 

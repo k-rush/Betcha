@@ -2,8 +2,9 @@ class Round < ActiveRecord::Base
   belongs_to :bet 
 
   has_many :contracts, dependent: :destroy
+  accepts_nested_attributes_for :contracts #so you can create all contracts with a single button
 
-  has_many :players, through: :contracts, source: :user
+  has_many :users, through: :contracts
 
   has_many :agree_players,   -> { where(contracts: { agreed: true }) },  through: :contracts, source: :user
   has_many :against_players, -> { where(contracts: { agreed: false }) }, through: :contracts, source: :user

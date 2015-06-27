@@ -1,0 +1,20 @@
+/ old way of accepting each person manually, works correctly but want single buttom
+%h2 Agreed:
+- if @agree_players
+  %ul
+    = @agree_players.each do |player|
+      %li= link_to player.name, player
+      - unless player.rounds.include? @round
+        = simple_form_for [@bet, @round, @round.contracts.build] do |f|
+          = f.hidden_field :user_id, value: player.id
+          = f.submit "Accept", class: 'btn btn-defualut'
+
+%h2 Against:
+- if @against_players
+  %ul
+    = @against_players.each do |player|
+      %li= link_to player.name, player
+      - unless player.rounds.include? @round
+        = simple_form_for [@bet, @round, @round.contracts.build] do |f|
+          = f.hidden_field :user_id, value: player.id
+          = f.submit "Accept", class: 'btn btn-defualut'
