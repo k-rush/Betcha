@@ -17,6 +17,7 @@ class RoundsController < ApplicationController
   end
 
   def update
+    # player of round updates round 'accepted' to true
   end
 
   def destroy
