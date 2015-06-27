@@ -1,7 +1,7 @@
- <% if @user_bets %>
-    <h2><%= @user.name %>'s bets</h2>
+ <% if @bets %>
+    <h3>Current Bets</h3>
       
-      <% @user_bets.each do |bet| %>
+      <% @bets.each do |bet| %>
           <div class="bet">
             <%= link_to bet.title, bet, class: "bet-title" %>
             <br>

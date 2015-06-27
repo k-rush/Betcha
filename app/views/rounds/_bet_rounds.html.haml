@@ -1,8 +1,12 @@
-= @rounds.each do |round|
+- @rounds.each do |round|
   .bet
     .round
       round: 
       = round.id
+      - round.players.each do |player|
+        %ul
+          %li= link_to player.name, player
+
  
 
   
