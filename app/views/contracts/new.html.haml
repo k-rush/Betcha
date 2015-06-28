@@ -1,5 +1,5 @@
 .bet.another-round
-  = link_to "+ #{@bet.title} again", @bet, class: "another-round-text"
+  = link_to "Betcha #{@bet.title} again", @bet, class: "another-round-text"
 %br
 %br
 
@@ -46,6 +46,7 @@
 
 %br
 
+%h3 Previous rounds
 = render 'rounds/bet_rounds'
 
 
