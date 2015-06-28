@@ -17,7 +17,7 @@
 
 <!-- acknowledge friendship  -->
 <% elsif @user.friends_with? current_user %>
-  <p>Friends for (SOME AMOUNT OF TIME)</p>
+  <p>Friends for <%= current_user.age_of_friendship_with @user %></p>
 
 <!-- if you're waiting for a friend to respond to a request -->
 <% elsif current_user.is_requesting? @user %>

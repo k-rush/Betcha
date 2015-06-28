@@ -17,7 +17,7 @@
           <% @agree_requesters.each do |requester| %>
             <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %>
             <%= link_to requester.name, requester %>
-            <%= render 'accept_reject_btns', membership: membership %>
+            <%= render 'memberships/accept_reject_btns', membership: membership %>
             <br>
           <%end%>
 
@@ -43,7 +43,7 @@
         <% @against_requesters.each do |requester| %>
         <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
           <%= link_to requester.name, requester %>
-          <%= render 'accept_reject_btns', membership: membership %>
+          <%= render 'memberships/accept_reject_btns', membership: membership %>
         <% end %>
       </div>
 

@@ -1,42 +1,51 @@
-%h2 
-  Contracts for round 
-  =@round.id
-  of
-  = link_to @bet.title, @bet
+.bet.another-round
+  = link_to "+ #{@bet.title} again", @bet, class: "another-round-text"
+%br
+%br
 
 
-/ single form for all contracts (doesnt work yet)
+- if @round.agree_won? 
+  .bet.round-agree-won
+    %span
+      Round: 
+      = @round.id
+
+    .round-time
+      = @round.created_at.strftime('%A' ', ' '%b' ' ' '%d' ', ' '%I' ':' '%M' '%p')
+    %br
+    %span.wager
+      $
+      = @bet.wager
+    %span.odds
+      = "#{@bet.odds}:1"
+    %br
 
       
-/ giving contracts created in Contracts new action, no id's show and not saving to DB
-%ul
-  - @round.contracts.each do |contract|
-    %li= contract.user.name
-    %li= contract.id
 
-.bet
-  .bet_title
-    = @bet.title
+    - @round.users.each do |player|
+      = link_to player.name, player
 
 
-
-  = @bet.created_at
-  = @bet.bet 
-
-  .wager
-    $
-    = @bet.wager
-  .odds
-    = @bet.odds
-    = ": 1"
+- else
+  .bet.round-against-won
+    Round: 
+    = @round.id
+    .round-time
+      = @round.created_at.strftime('%A' ', ' '%b' ' ' '%d' ', ' '%I' ':' '%M' '%p')
 
 
+    .wager
+      $
+      = @bet.wager
+    .odds
+      = "#{@bet.odds}:1"
+    %br
 
+      - @round.users.each do |player|
+        = link_to player.name, player
 
-= render 'memberships/bet_buttons'
-= render 'rounds/round_buttons'
+%br
 
-= render 'memberships/bet_members'
 = render 'rounds/bet_rounds'
 
 

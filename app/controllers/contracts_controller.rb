@@ -2,9 +2,27 @@ class ContractsController < ApplicationController
   def index
   end
 
-  def new
+  def new #maybe change name
     @round = Round.find(params[:round_id])
     @bet = @round.bet
+
+
+    @agree_players = @bet.agree_members
+    @agree_players.each do |player| 
+      unless player.rounds.include? @round #to allow page to refresh
+        @round.contracts.create!(user_id: player.id) # not sure if this is good practice, but it finally WORKS!!! :D   Auto forges contracts, which still need to be signed
+      end
+    end
+
+    @against_players = @bet.against_members # dry this up, move logic to model
+    @against_players.each do |player|
+      unless player.rounds.include? @round
+        @round.contracts.create!(user_id: player.id) # not sure if this is good practice, but it finally WORKS!!! :D   Auto forges contracts, which still need to be signed
+      end
+   
+    end
+     
+
 
     @current_membership = current_user.memberships.find_by(bet_id: @bet)
     
@@ -16,18 +34,7 @@ class ContractsController < ApplicationController
 
     @rounds = @bet.rounds.all.order(created_at: :desc)  # paginate this
     
-    @agree_players = @bet.agree_members
-    @agree_players.each do |player| 
-      @round.contracts.create!(user_id: player.id) # not sure if this is good practice, but it finally WORKS!!! :D   Auto forges contracts, which still need to be signed
-    end
-
-    @against_players = @bet.against_members # dry this up, move logic to model
-    @against_players.each do |player|
-      @round.contracts.create!(user_id: player.id)
-   
-    end
-     
-  end
+  end 
 
   def create
     @round = Round.find(params[:round_id])

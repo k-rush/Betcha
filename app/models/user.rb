@@ -29,6 +29,15 @@ class User < ActiveRecord::Base
     self.requestees.include? other_user
   end
 
+  def age_of_friendship_with(other_user)
+    if self.friends_with?(other_user)
+      if friendship = self.friendships.find_by(friend_id: other_user.id)
+      elsif friendship = self.friendships.find_by(user_id: other_user.id)
+      time_ago_in_words(friendship.created_at)
+    end
+    end
+  end
+
 =begin # hmm not working...
   def history?(other_user)
     if self.is_requesting? other_user || other_user.is_requesting? self || self.friends_with? other_user
