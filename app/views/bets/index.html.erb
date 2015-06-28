@@ -1,45 +1,11 @@
 <%= link_to 'New Bet', new_bet_path, class: "btn btn-primary new-bet-btn" %>
 
-<div class="bets">
-  <div class='active-bets'>
-    <% if @active_bets %>
-    <h2>Your Bets</h2>
-      
-      <% @active_bets.each do |bet| %>
-          <div class="bet">
-            <ul>
-              <span class="bet_title"><%= link_to bet.title, bet %></span>
-              <br>
-              <li>Wager: <%= bet.wager %> </li>
-              <li>Odds: <%= bet.odds %> </li>
-          </div>
-      <% end %>
+<!-- dry this up!! -->
 
-      <br>
-    <% end %>
-  </div>
-
-  <div class="pending-bets requested_bet">
-    <% if @pending_bets %>
-    <h2>Requested Bets</h2>
-
-      <% @pending_bets.each do |bet| %>
-          <div class="bet">
-            <ul>
-              <span class="bet_title"><%= link_to bet.title, bet %></span>
-              <br>
-              <li>Wager: <%= bet.wager %> </li>
-              <li>Odds: <%= bet.odds %> </li>
-          </div>
-      <% end %>
-
-        <br>
-      <% end %>
-  </div
 
    <div class="all-bets">
-    <% if @all_bets %>
-    <h2>Feed</h2>
+      <% if @all_bets %>
+      <h2>Feed</h2>
 
       <% @all_bets.each do |bet| %>
           <div class="bet">
@@ -54,8 +20,6 @@
         <br>
       <% end %>
   </div>
-
-</div>
       
 
 

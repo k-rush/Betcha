@@ -3,9 +3,27 @@
 <%= render 'friendships/friend_status' %>
 <br>
 
-<% if @user != current_user %>
-  <%= render 'memberships/user_bets' %>
-<% end %>
+
+<%= render 'memberships/user_bets' %>
+
+
+  <div class="pending-bets requested_bet">
+    <% if @requested_bets %>
+    <h3>Requested Bets</h3>
+
+      <% @requested_bets.each do |bet| %>
+          <div class="bet">
+            <ul>
+              <span class="bet_title"><%= link_to bet.title, bet %></span>
+              <br>
+              <li>Wager: <%= bet.wager %> </li>
+              <li>Odds: <%= bet.odds %> </li>
+          </div>
+      <% end %>
+
+        <br>
+      <% end %>
+  </div>
 
 
 <%= render 'contracts/user_rounds' %>

@@ -4,7 +4,7 @@ class BetsController < ApplicationController
   def index
 		  @active_bets = current_user.active_bets# !!! check syntax and logic
       @pending_bets = current_user.pending_bets
-      @all_bets = Bet.all
+      @all_bets = Bet.all.order(created_at: :desc)
   end
 
   def show
