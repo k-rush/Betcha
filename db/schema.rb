@@ -60,6 +60,9 @@ ActiveRecord::Schema.define(version: 20150627065211) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
+>>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
+=======
 >>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
