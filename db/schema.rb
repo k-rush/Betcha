@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624221015) do
+ActiveRecord::Schema.define(version: 20150627065211) do
 
   create_table "bets", force: :cascade do |t|
     t.text     "bet"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20150624221015) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contracts", force: :cascade do |t|
+    t.integer  "round_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "agreed"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -31,6 +39,28 @@ ActiveRecord::Schema.define(version: 20150624221015) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
+=======
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "bet_id"
+    t.boolean  "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "against"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "pot"
+    t.integer  "bet_id"
+    t.integer  "odds"
+    t.boolean  "signed"
+    t.boolean  "agree_won"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+>>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

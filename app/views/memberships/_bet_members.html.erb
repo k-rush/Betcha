@@ -1,16 +1,13 @@
+<br><br>
 <div class='bet-members'>
 
-<h2>Agrees</h2>
+<span class="agrees-against">Agrees:</span>
 <% if @agree_members.any? %>
-
-        <div class='active-members'>
-
-          <% @agree_members.each do |member| %>
-            <%= link_to member.name, member %>
-          <% end %>
-        </div>
+  <% @agree_members.each do |member| %>
+    <%= link_to member.name, member %>
+  <% end %>
 <% else%>
-  <p>(no one agrees yet)</p>
+  <span class='no-requests'>(no one agrees yet)</span>
 <% end %>
 
 <% if @agree_requesters.any? %>
@@ -20,23 +17,24 @@
           <% @agree_requesters.each do |requester| %>
             <% membership = requester.memberships.find_by(bet_id: @bet.id) #add index to model %>
             <%= link_to requester.name, requester %>
-            <%= render 'accept_reject_btns', membership: membership %>
+            <%= render 'memberships/accept_reject_btns', membership: membership %>
             <br>
           <%end%>
 
         </div>
 
 <% end %>
+<br>
 
 
-<h2>Against</h2>           
+<span class="agrees-against">Against:</span>
 <% if @against_members.any? %>
  
         <% @against_members.each do |member| %>
           <%= link_to member.name, member %>
         <% end %>
 <% else%>
-  <p>(no one's against yet)</p>
+  <span class="no-requests">(no one's against yet)</span>
 <% end %>
 
 <% if @against_requesters.any? %>
@@ -45,8 +43,10 @@
         <% @against_requesters.each do |requester| %>
         <% membership = requester.memberships.find_by(bet_id: @bet.id) %>
           <%= link_to requester.name, requester %>
-          <%= render 'accept_reject_btns', membership: membership %>
+          <%= render 'memberships/accept_reject_btns', membership: membership %>
         <% end %>
       </div>
 
 <% end %>
+
+<br><br>

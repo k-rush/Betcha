@@ -1,0 +1,15 @@
+%h3
+  Bet history:
+
+- if @rounds
+  - @rounds.each do |round|
+    - if round.agree_won?
+      .bet.round-agree-won
+        = link_to "#{round.bet.title} round #{round.id}", round.bet
+        .round-time
+          = round.created_at.strftime('%A' ', ' '%b' ' ' '%d' ', ' '%I' ':' '%M' '%p')
+    - else
+      .bet.round-against-won
+        = link_to "#{round.bet.title} round #{round.id}", round.bet
+        .round-time
+          = round.created_at.strftime('%A' ', ' '%b' ' ' '%d' ', ' '%I' ':' '%M' '%p')

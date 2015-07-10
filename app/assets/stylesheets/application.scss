@@ -14,7 +14,7 @@ body {
 }
 
 .navbar-default {
-  background-color: #88e;
+  background-color: #7C7EFC;
 
   .navbar-nav > li > a {
     color: white;
@@ -34,7 +34,7 @@ body {
 
 }
 .navbar-brand > a {
-  color: #FF7E00;
+  color: #FF7373;
   text-shadow: 1.8px 1.4px 0px white;
   font-size: 2em;
   text-decoration: none;
@@ -61,10 +61,11 @@ body {
 }
 
 .bet {
-  background: rgba(70, 208, 140, 0.29);
+  
   box-shadow: 0px 2px 2px rgb(184, 184, 184);
   padding:1em;
   margin: 1em 0px;
+  background-color: #F1F2F9;
 
   .bet_title {
     color:#005FB2;
@@ -83,6 +84,57 @@ body {
       margin: .2em
     }
   }
+}
+
+.btn-leave-bet {
+  float:right;
+
+  .btn-leave {
+    background-color: #F4F4F4;
+  }
+}
+
+.btn-group-round {
+  margin: auto;
+  text-align: center
+}
+
+.btn-new-round {
+  display:inline-block;
+  float: none;
+  margin: 1em 2em;
+
+
+  .btn-agree-won {
+    background-color: rgb(113, 242, 198);
+    box-shadow: 2.2px 4.2px 17px #898989;
+
+  }
+
+  .btn-against-won {
+    background-color: rgb(255, 115, 115);
+    box-shadow: 2.2px 4.2px 17px #898989;
+
+  }
+
+}
+
+.round-agree-won {
+  background: rgba(70, 208, 140, 0.29);
+}
+
+.round-against-won {
+  background: rgba(170, 108, 140, 0.29);
+}
+
+.another-round {}
+
+.another-round-text {
+  font-size: 1.4em;
+}
+
+.round-time {
+  float:right;
 }
 
 .bet-btn-group {

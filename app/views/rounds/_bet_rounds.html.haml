@@ -1,0 +1,30 @@
+- @rounds.each do |round|
+  - unless round == @bet.rounds.last
+    - if round.agree_won? # i dont know why this still shows the last round in bet show page, but thats convenient
+      .bet.round-agree-won
+        = 'round: '
+        = round.id
+        .round-time
+          =  round.created_at.strftime('%A' ', ' '%b' ' ' '%d' ', ' '%I' ':' '%M' '%p')
+
+        - round.users.each do |player|
+          = link_to player.name, player
+            
+    - else
+      .bet.round-against-won
+        = 'round: '
+        = round.id
+        .round-time
+          =  round.created_at.strftime('%A' ', ' '%b' ' ' '%d' ', ' '%I' ':' '%M' '%p')
+
+        - round.users.each do |player|
+          = link_to player.name, player
+        
+        
+
+        
+
+
+   
+
+    

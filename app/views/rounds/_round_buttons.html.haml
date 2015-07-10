@@ -1,0 +1,13 @@
+%br
+
+- if @current_membership
+  .btn-group-round
+    .btn-new-round
+      = simple_form_for [@bet, @bet.rounds.build] do |f|
+        = f.hidden_field :agree_won, value: true
+        = f.submit "Agree won!", class: "btn-agree-won btn btn default"
+    .btn-new-round
+      = simple_form_for [@bet, @bet.rounds.build] do |f|
+        = f.hidden_field :agree_won, value: false
+        = f.submit "Against won!", class: "btn-against-won btn btn-defualt"
+
