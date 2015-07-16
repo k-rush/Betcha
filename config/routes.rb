@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
+
   get 'contracts/index'
 
   get 'contracts/create'
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
   get 'rounds/update'
 
   get 'rounds/destroy'
->>>>>>> 06fc02ff6dd182e5b45027f7a26cf6aeb1705a59
+
 
   root 'bets#index'
   devise_for :users
@@ -27,14 +26,9 @@ Rails.application.routes.draw do
     end
     resources :memberships #might be able to get rid of this
   end
-<<<<<<< HEAD
-<<<<<<< HEAD
-  resources :friendships #not sure if this is correct yet.
+
   
-=======
-=======
->>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
   resources :friendships
   resources :memberships
->>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
+
 end

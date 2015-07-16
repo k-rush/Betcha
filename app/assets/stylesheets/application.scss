@@ -14,7 +14,7 @@ body {
 }
 
 .navbar-default {
-  background-color: #7C7EFC;
+  background-color: #222;
 
   .navbar-nav > li > a {
     color: white;
@@ -34,8 +34,8 @@ body {
 
 }
 .navbar-brand > a {
-  color: #FF7373;
-  text-shadow: 1.8px 1.4px 0px white;
+  color: #eee;
+  text-shadow: 0.4px 0.4px 0px #222;
   font-size: 2em;
   text-decoration: none;
 }
@@ -49,7 +49,7 @@ body {
 }
 
 .new-bet-btn {
-  background-color: #625EFF;
+  background-color: #3C3;
   border: none;
   box-shadow: 1.2px 1.2px 3px rgb(140, 140, 140);
 }

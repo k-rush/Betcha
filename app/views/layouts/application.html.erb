@@ -13,15 +13,7 @@
 
     <%= render 'layouts/header' %>
 
-    <!-- provides alerts and warnings -->
-    <div id="main_content" class="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: "alert" %>
-      <% end %>
     
-<<<<<<< HEAD
-    </div>
-  </div>
 
   <!-- provides alerts and warnings -->
   <div class="container">
@@ -30,10 +22,10 @@
     <% end %>
   </div>
 
-  <%= yield %>
-=======
+  
       <div id="content" class="col-md-9 center-block">
         <%= yield %>
       </div>
-    </div>
->>>>>>> c9ba4d71a0b00d262b609db0a32b1af3cbaa45dd
+    </body>
+</html>
+

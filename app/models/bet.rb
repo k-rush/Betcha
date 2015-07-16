@@ -17,12 +17,9 @@ class Bet < ActiveRecord::Base
     agree_requesters | against_requesters
   end
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-end
-=======
-=======
->>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
+
+
+
   has_many :rounds
 
   #has_many :agree_won_rounds
@@ -30,9 +27,5 @@ end
 
 
 
-<<<<<<< HEAD
+
 end
->>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
-=======
-end
->>>>>>> 09d862b677376911e175cb1cce91273765a9a2fb
